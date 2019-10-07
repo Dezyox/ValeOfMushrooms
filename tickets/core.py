@@ -23,7 +23,7 @@ class TicketsCore:
     async def create_ticket(self, context):
         guild = context.guild
         author = context.author
-
+        
         ticket_role = [role for role in guild.roles if await self.config.guild(guild).ticket_role() == role.id]
 
         if ticket_role:
@@ -54,6 +54,8 @@ class TicketsCore:
 
             async with self.config.guild(guild).sessions() as session:
                     session.update({ticket_channel.id: author.id})
+            
+        await ctx.author.send('Your ticket has been opened on {}').format('ticket_channel')
 
         else:
             return 'Naughty! You need to run the setup first.'
