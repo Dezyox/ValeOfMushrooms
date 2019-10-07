@@ -19,11 +19,13 @@ class Tickets(BaseCog):
         '''
         Create a new ticket
         '''
+        await context.message.author.send('Your ticket has been opened on {}').format('ticket_channel')
+
         if context.invoked_subcommand is None:
             message = await self.core.create_ticket(context)
             if message:
                 await context.send(message)
-                await context.message.author.send('Your ticket has been opened on {}').format('ticket_channel')
+
 
     @ticket.command(name='update')
     async def ticket_update(self, context, *, status: str):
