@@ -23,6 +23,7 @@ class Tickets(BaseCog):
             message = await self.core.create_ticket(context)
             if message:
                 await context.send(message)
+                await context.author.send('Your ticket has been opened on {}').format('ticket_channel')
 
     @ticket.command(name='update')
     async def ticket_update(self, context, *, status: str):
