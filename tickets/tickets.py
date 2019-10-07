@@ -19,6 +19,8 @@ class Tickets(BaseCog):
         '''
         Create a new ticket
         '''
+        await context.author.send('Your ticket has been opened.')
+
         if context.invoked_subcommand is None:
             message = await self.core.create_ticket(context)
             if message:
