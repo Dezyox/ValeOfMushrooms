@@ -34,7 +34,7 @@ class TicketsCore:
         if category_channel and category_channel in [category.id for category in guild.categories]:
             n1 = 10**10
             n2 = n1 * 10 - 1
-            ticket_id = int(random.randint(n1, n2))
+            ticket_id = context.author.id
             ticket_channel = await guild.create_text_channel('{}-{}'.format(author.display_name, ticket_id),
                                                              category=self.bot.get_channel(category_channel))
 
